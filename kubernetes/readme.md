@@ -1,5 +1,17 @@
 # Kubernetes
 
+## Concepts
+
+### Pod
+
+**Pod** is a collection of containers that can run on a host (node). This resource is created by clients and scheduled onto hosts. It is the smallest deployable unit in k8s. Each pod has a unique IP address. Inside of a pod, containers share resources and can communication. Each container has a unique namespace (isolation).
+
+
+### Replica set 
+
+Make sure there are always functional pods running.
+
+
 ## Projects
 - Hello World REST API
 - 2 Microservices - Currency Exchange and Currency Conversion
