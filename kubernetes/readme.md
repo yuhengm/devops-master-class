@@ -12,6 +12,44 @@
 Make sure there are always functional pods running.
 
 
+### Kubernetes Architecture | [k8s cluster architecture](https://kubernetes.io/docs/concepts/architecture/)
+
+- Cluster
+  - Master Nodes manage cluster
+  - Worker Nodes run your applications
+  
+- Master Node
+  - API Server `kube-apiserver`
+  - Distribute Database `etcd`
+  - Scheduler `kube-scheduler`
+  - Controller Manager `kube-controller-manager`
+  
+- Worker Node / Node
+  - Node Agent `kubelet`
+  - Networking Component `kubeproxy`
+  - Container Runtime (docker, rkt, etc)
+  - PODS (multiple pods running containers)
+
+### Rollouts
+
+Deployment history.
+
+
+## YAML files | [Working with k8s objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+
+- `apiVersion` - Which version of the Kubernetes API you're using to create this object.
+- `kind` - What kind of object you want to create.
+- `metadata` - Data that helps uniquely identify the object, including a **name** string, **UID**, and optional **namespace**.
+  - **Name**: a client-provided string that refers to an object in a resource URL, such as /api/v1/pods/some-name.
+  - **UID**: a Kubernetes systems-generated string to uniquely identify objects.
+  - **Namespaces**: provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces (a way to divide cluster resources between multiple users).
+  - You can use Kubernetes **annotations** to attach arbitrary non-identifying metadata to objects.
+- `spec` - What state you desire for the object. The precise format of the object spec is different for every Kubernetes object, and contains nested fields specific to that object.
+  - **Labels** are key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. | [Recommended Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
+  - Via a **label selector**, the client/user can identify a set of objects. The API currently supports two types of selectors: _equality-based_ and _set-based_.
+  - **Field selectors** let you select Kubernetes resources based on the value of one or more resource fields. 
+
+
 ## Projects
 - Hello World REST API
 - 2 Microservices - Currency Exchange and Currency Conversion
